@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
   });
 });
 
-app.post('/', (req, res) => {
+app.post('/save', (req, res) => {
   fs.readFile('./db.json', 'utf8', (err, data) => {
     if (err) {
       console.log(err);
@@ -25,12 +25,16 @@ app.post('/', (req, res) => {
       const nodes = JSON.parse(data);
       const newNodes = req.body.newNodes;
       nodes.push(newNodes);
-
-      fs.writeFile('./db.json', JSON.stringify(nodes), (err) => {
+      req.body.updatedNodes.forEach(node => {
+        const index = nodes.findIndex((n) => n.id === node.id);
+        nodes[index] = node;
+      });
+      console.log(nodes);
+      fs.writeFile('./db.json', JSON.stringify(nodes), {flag:'w'}, (err) => {
         if (err) {
           console.log(err);
         } else {
-          res.send('User added successfully');
+          res.send(nodes);
         }
       });
     }
