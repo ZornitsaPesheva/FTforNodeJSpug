@@ -16,8 +16,7 @@ script.
   family.onUpdateNode((args) => {
     console.log(args);
     let data = { newNodes: args.addNodesData, updatedNodes: args.updateNodesData, removedNodeId: args.removeNodeId }
-    console.log(data)
-    fetch('/save', {
+    fetch('/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -17,13 +17,12 @@ app.get('/', (req, res) => {
   });
 });
 
-app.post('/save', (req, res) => {
+app.post('/', (req, res) => {
   fs.readFile('./db.json', 'utf8', (err, data) => {
     if (err) {
       console.log(err);
     } else {
       let nodes = JSON.parse(data);
-      const newNodes = req.body.newNodes;
       req.body.newNodes.forEach(node => {
         nodes.push(node);
       });
@@ -31,7 +30,6 @@ app.post('/save', (req, res) => {
         const index = nodes.findIndex((n) => n.id === node.id);
         nodes[index] = node;
       });
-      console.log(req.body)
       nodes = nodes.filter((node) => node.id !== req.body.removedNodeId);
       fs.writeFile('./db.json', JSON.stringify(nodes), {flag:'w'}, (err) => {
         if (err) {
