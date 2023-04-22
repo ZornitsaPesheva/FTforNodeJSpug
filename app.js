@@ -22,10 +22,11 @@ app.post('/', (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      const users = JSON.parse(data);
-      const newUser = req.body;
-      users.push(newUser);
-      fs.writeFile('./db.json', JSON.stringify(users), (err) => {
+      const nodes = JSON.parse(data);
+      const newNodes = req.body.newNodes;
+      nodes.push(newNodes);
+
+      fs.writeFile('./db.json', JSON.stringify(nodes), (err) => {
         if (err) {
           console.log(err);
         } else {

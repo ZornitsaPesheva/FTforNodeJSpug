@@ -9,7 +9,24 @@ script.
   let family = new FamilyTree(document.getElementById("tree"), { 
     nodeBinding: {
       field_0: "name"
-    }
+    },
+    nodeTreeMenu: true,
+  });
+
+  family.onUpdateNode((args) => {
+    console.log(args);
+    let data = { newNodes: args.addNodesData, updated: args.updateNodesData }
+    fetch('/save', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+  //return false; to cancel the operation
   });
   
   family.load(data)
