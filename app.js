@@ -22,7 +22,7 @@ app.post('/save', (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      const nodes = JSON.parse(data);
+      let nodes = JSON.parse(data);
       const newNodes = req.body.newNodes;
       req.body.newNodes.forEach(node => {
         nodes.push(node);
@@ -31,6 +31,8 @@ app.post('/save', (req, res) => {
         const index = nodes.findIndex((n) => n.id === node.id);
         nodes[index] = node;
       });
+      console.log(req.body)
+      nodes = nodes.filter((node) => node.id !== req.body.removedNodeId);
       fs.writeFile('./db.json', JSON.stringify(nodes), {flag:'w'}, (err) => {
         if (err) {
           console.log(err);
