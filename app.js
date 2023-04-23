@@ -5,14 +5,16 @@ const app = express();
 const port = 3000;
 
 app.use(bodyParser.json());
+app.use(express.static('public'));
+
 app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
-  fs.readFile('./db.json', 'utf8', (err, data) => {
+  fs.readFile('./db.json', 'utf8', (err, json) => {
     if (err) {
       console.log(err);
     } else {
-        res.render('index', { json: data });
+        res.render('index', { json });
     }
   });
 });

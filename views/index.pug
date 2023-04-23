@@ -1,10 +1,13 @@
-script(src='https://balkan.app/js/FamilyTree.js')
-#tree
+//- script(src='https://balkan.app/js/FamilyTree.js')
+script(src='/js/familytree.js')
 
+#tree
 
 script.
 
   var data = JSON.parse(!{JSON.stringify(json)});
+
+
 
   let family = new FamilyTree(document.getElementById("tree"), { 
     nodeBinding: {
