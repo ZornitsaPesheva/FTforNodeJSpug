@@ -1,5 +1,5 @@
 ## npm install
 ## node app
 
-## Create /public/js folder in youe root folder
+## Create js folder in /public
 ## [Download](https://familytreejs.balkan.app/js/get/free) FamilyTreeJS and add extracted files iinto your /public/js folder
