@@ -1,5 +1,5 @@
-//- script(src='https://balkan.app/js/FamilyTree.js')
 script(src='/js/familytree.js')
+
 link(rel="icon" href="/favicon.png" type="image/x-icon")
 
 #tree
@@ -7,8 +7,6 @@ link(rel="icon" href="/favicon.png" type="image/x-icon")
 script.
 
   var data = JSON.parse(!{JSON.stringify(json)});
-
-
 
   let family = new FamilyTree(document.getElementById("tree"), { 
     nodeBinding: {
@@ -18,21 +16,20 @@ script.
   });
 
   family.onUpdateNode((args) => {
-    console.log(args);
-    let data = { newNodes: args.addNodesData, updatedNodes: args.updateNodesData, removedNodeId: args.removeNodeId }
     fetch('/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(args)
     })
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(error => console.error(error));
   //return false; to cancel the operation
   });
-  
+
+
   family.load(data)
 
 

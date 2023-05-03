@@ -25,14 +25,14 @@ app.post('/', (req, res) => {
       console.log(err);
     } else {
       let nodes = JSON.parse(data);
-      req.body.newNodes.forEach(node => {
+      req.body.addNodesData.forEach(node => {
         nodes.push(node);
       });
-      req.body.updatedNodes.forEach(node => {
+      req.body.updateNodesData.forEach(node => {
         const index = nodes.findIndex((n) => n.id === node.id);
         nodes[index] = node;
       });
-      nodes = nodes.filter((node) => node.id !== req.body.removedNodeId);
+      nodes = nodes.filter((node) => node.id !== req.body.removeNodeId);
       fs.writeFile('./db.json', JSON.stringify(nodes), {flag:'w'}, (err) => {
         if (err) {
           console.log(err);
