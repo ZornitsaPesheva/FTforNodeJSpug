@@ -6,7 +6,8 @@ npm install
 ```
 
 ## To add <strong>Family Tree JS</strong>:
-Create a folder called <strong>js</strong> in the <strong>/public</strong> folder
+Create a folder called <strong>js</strong> in the <strong>/public</strong> folder.
+
 [Download](https://familytreejs.balkan.app/js/get/free) FamilyTreeJS and add extracted files iinto your <strong>/public/js</strong> folder
 
 ## To start the project run this:
