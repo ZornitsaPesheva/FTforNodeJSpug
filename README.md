@@ -1,6 +1,6 @@
 # Save changes in Family Tree JS with Node.js
 
-## Download or clone the project and run this do install the pacjages:
+## Download or clone the project and run this do install the packages:
 ```
 npm install
 ```
