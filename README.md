@@ -1,5 +1,15 @@
-## npm install
-## node app
+# Save changes in Family Tree JS with Node.js
 
-## Create js folder in /public
-## [Download](https://familytreejs.balkan.app/js/get/free) FamilyTreeJS and add extracted files iinto your /public/js folder
+## Download or clone the project and run this do install the pacjages:
+```
+npm install
+```
+
+## To add <strong>Family Tree JS</strong>:
+Create a folder called <strong>js</strong> in the <strong>/public</strong> folder
+[Download](https://familytreejs.balkan.app/js/get/free) FamilyTreeJS and add extracted files iinto your <strong>/public/js</strong> folder
+
+## To start the project run this:
+```
+node app
+```
